@@ -1,23 +1,25 @@
-Sinatra Oauth2 Authentication Example 
+Sinatra Google OAuth Example
 ============
 
-Using Oauth to authenticate against an existing login service is an extremely useful technique.
+A sample application for Google OAuth, inspired by [queuetue's app skeleton](https://github.com/queuetue/sinatra-oauth2-google-auth-skeleton)
 
-Since I coudn't find an example that was complete enough to copy, I decided to put this example out there.
+# Required Pre-work
 
-It uses DataMapper, but would be easy to convert to whatever storage mechanism you prefer.
+* Set up a client application in [Google Developer Console](https://console.developers.google.com)
+    * Set up the app with a OAuth Client Credential
+        * Use ``http://localhost:9292/`` as the app url
+        * Use ``http://localhost:9292/auth/callback`` as the callback url
+    * Add the Google Plus API to the App
+* Create a ``.env`` file in the proeject folder
+```
+GOOGLE_API_CLIENT="YOUR CLIENT ID HERE"
+GOOGLE_API_SECRET="YOUR CLIENT SECRET HERE"
+```
 
-It uses sinatra, but it doens't have to- the mechanics are simple enough to move to your chosen platform.
+# Start the App
+``rackup``
 
-This is meant as an example that works, and possibly as a skeleton that you can fork and make use of in your own projects.
+or
 
-CAUTION: I AM NOT A SECURITY EXPERT and I'm new at working with oAuth2.  This is the best I've come up with to date.  As I learn more, I will improve it.  If you see anything tragic, stupid, or missing, please let me know!
+``rerun rackup``
 
-You must setup the following in your environment:
-
-	ENV['DATABASE_URL']  		(Follow datamapper guidelines)
-	ENV['SESSION_SECRET']		(Come up with your own)
-	ENV['G_API_CLIENT']			(Get this from Google)
-	ENV['G_API_SECRET']			(Get this from Google, keep it private.)
-
-Then, do a bundle install and rackup, and you'll be authenticating.
